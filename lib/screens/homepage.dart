@@ -10,6 +10,28 @@ class Homepage extends StatefulWidget {
 class _State extends State<Homepage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Todoアプリ"),
+      ),
+      body: Column(
+        children: [
+          // widget追加
+          Expanded(
+              child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 5),
+            child: TextField(),
+          )),
+          const SizedBox(width: 10),
+          GestureDetector(
+            onTap: () {},
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+              child: const Text("Add"),
+            ),
+          )
+        ],
+      ),
+    );
   }
 }
