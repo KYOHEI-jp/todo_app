@@ -7,6 +7,17 @@ class DatabaseConnect {
 
   //データベースへの接続するためのゲッター
   Future<Database> get database async {
+    Future<void> _createDB(Database db, int version) async {
+      await db.execute('''
+      CREATE TABLE todo(
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      title TEXT,
+      creationDate TEXT,
+      isChecked INTEGER
+      )
+      ''');
+    }
+
     //データベースの位置
     final dbpath = await getDatabasesPath();
     //データベースの名前
@@ -18,17 +29,6 @@ class DatabaseConnect {
     _database = await openDatabase(path, version: 1, onCreate: _createDB);
 
     return _database!;
-
-    Future<void> _createDB(Database db, int version) async {
-      await db.execute('''
-      CREATE TABLE todo(
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      title TEXT,
-      creationDate TEXT,
-      isChecked INTEGER
-      )
-      ''');
-    }
   }
 
   /*
@@ -55,7 +55,7 @@ class DatabaseConnect {
   }
 
   //フェッチする機能
-  Future<List<Todo>> getTodo(Todo todo) async {
+  Future<List<Todo>> getTodo() async {
     final db = await database;
     List<Map<String, dynamic>> items = await db.query(
       'todo',
