@@ -1,35 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/widgets/user_input.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({Key? key}) : super(key: key);
 
   @override
-  _State createState() => _State();
+  _HomepageState createState() => _HomepageState();
 }
 
-class _State extends State<Homepage> {
+class _HomepageState extends State<Homepage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFFF5EBFF),
       appBar: AppBar(
         title: const Text("Todoアプリ"),
       ),
       body: Column(
         children: [
-          // widget追加
-          Expanded(
-              child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 5),
-            child: TextField(),
-          )),
-          const SizedBox(width: 10),
-          GestureDetector(
-            onTap: () {},
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-              child: const Text("Add"),
-            ),
-          )
+          UserInput(),
         ],
       ),
     );
