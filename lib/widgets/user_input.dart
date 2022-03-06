@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
+import '../model/todo_model.dart';
+
 class UserInput extends StatelessWidget {
   var textController = TextEditingController();
-
-  UserInput({Key? key}) : super(key: key);
+  final Function insertFunction; // addItem functionを受け取る
+  UserInput({Key? key, required this.insertFunction}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,7 @@ class UserInput extends StatelessWidget {
               child: TextField(
                 controller: textController,
                 decoration: InputDecoration(
-                    hintText: "add new todo", border: InputBorder.none),
+                    hintText: "TODOのワードを書いてね", border: InputBorder.none),
               ),
             ),
           ),
@@ -26,7 +28,15 @@ class UserInput extends StatelessWidget {
             width: 10,
           ),
           GestureDetector(
-            onTap: () {},
+            onTap: () {
+              // todoを作成
+              var myTodo = Todo(
+                  title: textController.text,
+                  isChecked: false,
+                  creationDate: DateTime.now());
+              // パラメーターとして送る
+              insertFunction(myTodo);
+            },
             child: Container(
               color: Colors.red,
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
