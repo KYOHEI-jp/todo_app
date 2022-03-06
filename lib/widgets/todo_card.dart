@@ -47,7 +47,7 @@ class _TodoCardState extends State<TodoCard> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "title",
+                  widget.title,
                   style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 18,
@@ -57,7 +57,7 @@ class _TodoCardState extends State<TodoCard> {
                   height: 5,
                 ),
                 Text(
-                  "date",
+                  widget.creationDate.toString(),
                   style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
