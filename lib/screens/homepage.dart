@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app/widgets/todo_list.dart';
 import 'package:todo_app/widgets/user_input.dart';
 import 'package:todo_app/widgets/todo_card.dart';
 
@@ -19,6 +20,7 @@ class _HomepageState extends State<Homepage> {
       ),
       body: Column(
         children: [
+          TodoList(),
           UserInput(),
         ],
       ),
