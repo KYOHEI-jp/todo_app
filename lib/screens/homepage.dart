@@ -40,7 +40,10 @@ class _HomepageState extends State<Homepage> {
       ),
       body: Column(
         children: [
-          TodoList(),
+          TodoList(
+            deleteFunction: deleteItem,
+            insertFunction: addItem,
+          ),
           UserInput(
             insertFunction: addItem,
           ),

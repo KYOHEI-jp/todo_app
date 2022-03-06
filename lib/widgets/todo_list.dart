@@ -7,7 +7,12 @@ class TodoList extends StatelessWidget {
   // データベース接続のオブジェクトを作成
   var db = DatabaseConnect();
 
-  TodoList({Key? key}) : super(key: key);
+  final Function insertFunction;
+  final Function deleteFunction;
+
+  TodoList(
+      {Key? key, required this.insertFunction, required this.deleteFunction})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -30,8 +35,8 @@ class TodoList extends StatelessWidget {
                     title: data[i].title,
                     isChecked: data[i].isChecked,
                     creationDate: data[i].creationDate,
-                    insertFunction: () {},
-                    deleteFunction: () {},
+                    insertFunction: insertFunction,
+                    deleteFunction: deleteFunction,
                   ),
                 );
         },

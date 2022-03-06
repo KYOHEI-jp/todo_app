@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
 
+import '../model/todo_model.dart';
+
 class TodoCard extends StatefulWidget {
   final int id;
   final String title;
   final DateTime creationDate;
-   bool isChecked;
+  late bool isChecked;
   final Function insertFunction;
   final Function deleteFunction;
 
-  const TodoCard(
+  TodoCard(
       {Key? key,
       required this.id,
       required this.title,
       required this.isChecked,
       required this.creationDate,
-        // チェックボックスの押下で変更
+      // チェックボックスの押下で変更
       required this.insertFunction,
-        //デリートボタンで制御
+      //デリートボタンで制御
       required this.deleteFunction})
       : super(key: key);
 
@@ -27,6 +29,11 @@ class TodoCard extends StatefulWidget {
 class _TodoCardState extends State<TodoCard> {
   @override
   Widget build(BuildContext context) {
+    var anotherTodo = Todo(
+        id: widget.id,
+        title: widget.title,
+        isChecked: widget.isChecked,
+        creationDate: widget.creationDate);
     return Card(
       child: Row(
         children: [
@@ -38,6 +45,9 @@ class _TodoCardState extends State<TodoCard> {
                 setState(() {
                   widget.isChecked = value!;
                 });
+                // anotherTodoのisCheckの値を変更する
+                anotherTodo.isChecked = value!;
+                widget.insertFunction(anotherTodo);
               },
             ),
           ),
@@ -68,7 +78,10 @@ class _TodoCardState extends State<TodoCard> {
             ),
           ),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              // delete
+              widget.deleteFunction(anotherTodo);
+            },
             icon: const Icon(Icons.close),
           )
         ],
