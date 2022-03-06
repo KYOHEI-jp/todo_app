@@ -26,12 +26,13 @@ class TodoList extends StatelessWidget {
               : ListView.builder(
                   itemCount: datalength,
                   itemBuilder: (context, i) => TodoCard(
-                      id: id,
-                      title: title,
-                      isChecked: isChecked,
-                      creationDate: creationDate,
-                      insertFunction: insertFunction,
-                      deleteFunction: deleteFunction),
+                    id: data[i].id,
+                    title: data[i].title,
+                    isChecked: data[i].isChecked,
+                    creationDate: data[i].creationDate,
+                    insertFunction: () {},
+                    deleteFunction: () {},
+                  ),
                 );
         },
       ),
