@@ -11,7 +11,7 @@ class UserInput extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 8),
-      color: const Color(0xFFDAB5FF),
+      color: Color(0xFFFFFFFF),
       child: Row(
         children: [
           Expanded(
@@ -38,7 +38,7 @@ class UserInput extends StatelessWidget {
               insertFunction(myTodo);
             },
             child: Container(
-              color: Colors.red,
+              color: Colors.cyan,
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
               child: const Text(
                 "Add",
